@@ -64,7 +64,7 @@ Returnează sesiunile de task pentru data cerută.
 
 - **Comportament normal (serviciile sunt online):** pentru fiecare *task* session returnăm câmpurile ```id```, ```date```, ```notes```, ```status``` și întreg obiectul ```task``` (preluat din microserviciul task), nu doar ```taskId```. Obiectul include ```id``` și toate atributele lui (ex.: priority, size, description, etc.), cu metadate de versiune (prod/test).
 
-- **Comportament în fallback (servicii indisponibile):** returnăm ```id```, ```date```, ```notes```, ```status``` ***și doar** ```taskId```, împreună cu o marcă explicită a modului fallback/versiunii, astfel încât clientul să poată afișa o variantă minimalistă fără a eșua.
+- **Comportament în fallback (servicii indisponibile):** returnăm ```id```, ```date```, ```notes```, ```status``` **și doar** ```taskId```, împreună cu o marcă explicită a modului fallback/versiunii, astfel încât clientul să poată afișa o variantă minimalistă fără a eșua.
 
 ### Design Patterns folosite
 
