@@ -56,14 +56,15 @@ Aplicația a fost migrată la o arhitectură bazată pe microservicii, utilizân
 
 ### Reziliență
 
-- Circuit Breaker + Fallback. Dacă microserviciile dependente nu sunt disponibile, aplicăm un mecanism de fallback care previne crash-ul aplicației sau al endpoint-ului și livrează un răspuns degradat, dar util.
+- **Circuit Breaker + Fallback.** Dacă microserviciile dependente nu sunt disponibile, aplicăm un mecanism de fallback care previne crash-ul aplicației sau al endpoint-ului și livrează un răspuns degradat, dar util.
 
-- Endpoint: GET /taskSessions/date=YYYY-MM-DD
+- **Endpoint:** ```GET /taskSessions/date=YYYY-MM-DD```
+
 Returnează sesiunile de task pentru data cerută.
 
-- Comportament normal (serviciile sunt online): pentru fiecare task session returnăm câmpurile id, date, notes, status și întreg obiectul task (preluat din microserviciul task), nu doar taskId. Obiectul include id și toate atributele lui (ex.: titlu, descriere, assignee, etc.), cu metadate de versiune (prod/test).
+- **Comportament normal (serviciile sunt online):** pentru fiecare *task* session returnăm câmpurile ```id```, ```date```, ```notes```, ```status``` și întreg obiectul ```task``` (preluat din microserviciul task), nu doar ```taskId```. Obiectul include ```id``` și toate atributele lui (ex.: priority, size, description, etc.), cu metadate de versiune (prod/test).
 
-- Comportament în fallback (servicii indisponibile): returnăm id, date, notes, status și doar taskId, împreună cu o marcă explicită a modului fallback/versiunii, astfel încât clientul să poată afișa o variantă minimalistă fără a eșua.
+- **Comportament în fallback (servicii indisponibile):** returnăm ```id```, ```date```, ```notes```, ```status``` ***și doar** ```taskId```, împreună cu o marcă explicită a modului fallback/versiunii, astfel încât clientul să poată afișa o variantă minimalistă fără a eșua.
 
 ### Design Patterns folosite
 
